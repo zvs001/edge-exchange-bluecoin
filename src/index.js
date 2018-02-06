@@ -17,16 +17,16 @@ export default {
         exchangeName: 'BluecoinExchange'
       },
       async fetchExchangeRates (pairsHint) {
-      const reply = await io.fetch('https://api.coinmarketcap.com/v1/ticker/bluecoin/')
-      const json = await reply.json()
+        const reply = await io.fetch('https://api.coinmarketcap.com/v1/ticker/bluecoin/')
+        const json = await reply.json()
 
-      const exchange = {fromCurrency: 'BLU', toCurrency: 'iso:USD', rate: '0.0043'}
-      try {
-        exchange.rate = json[0].price_usd
-      } catch (e) { console.error('edge_exchange_bluecoin parse error', e) }
+        const exchange = {fromCurrency: 'BLU', toCurrency: 'iso:USD', rate: '0.0043'}
+        try {
+          exchange.rate = json[0].price_usd
+        } catch (e) { console.error('edge_exchange_bluecoin parse error', e) }
 
-      return [exchange]
-    }
-  })
+        return [exchange]
+      }
+    })
   }
 }
